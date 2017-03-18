@@ -8,7 +8,12 @@ function connect() {
 
         stompClient.subscribe('/topic/newpoint', function (data) {
           var theObject=JSON.parse(data.body);
-          alert("valor x: "+theObject['x'] + " valor y: "+theObject['y']);
+
+          var c = document.getElementById("myCanvas");
+          var ctx = c.getContext("2d");
+          ctx.beginPath();
+          ctx.arc(theObject['x'],theObject['y'],1,0,2*Math.PI);
+          ctx.stroke();
 
         });
     });
@@ -35,5 +40,25 @@ $(document).ready(
             connect();
             console.info('connecting to websockets');
 
+            function getMousePos(canvas, evt) {
+              var rect = canvas.getBoundingClientRect();
+              return {
+                x: evt.clientX - rect.left,
+                y: evt.clientY - rect.top
+              };
+            }
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+
+            canvas.addEventListener('mousedown', function(evt) {
+              var mousePos = getMousePos(canvas, evt);
+              var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+              stompClient.send("/topic/newpoint", {}, JSON.stringify({'x':mousePos.x,'y':mousePos.y}));
+            }, false);
+
+
+
         }
+
+
 );
