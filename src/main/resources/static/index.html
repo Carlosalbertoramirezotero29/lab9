@@ -24,13 +24,17 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         <script src="/webjars/sockjs-client/sockjs.min.js"></script>
         <script src="/webjars/stomp-websocket/stomp.min.js"></script>
         <script src="app.js"></script>
-
     </head>
-
-
 
     <body>
         <div></div>
-        <canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;">
+        <p>Ingrese identificador del Tópico:</p>
+        <input type="number" id="IdTopic" required><br>
+        <p>Nombre del Colaborador:</p>
+        <input type="text" id="Nombre" required><br>
+        <br>
+        <button type="button" id="changestate" onclick="changeTopic()">Click Me!</button><br>
+        <br>
+        <canvas id="myCanvas" width="800" height="600" style="border:1px solid #000000;"></canvas>
     </body>
 </html>

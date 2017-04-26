@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class WebsocketsMsbrokerExampleApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebsocketsMsbrokerExampleApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(WebsocketsMsbrokerExampleApplication.class, args);
+    }
 }
